@@ -46,8 +46,8 @@ def register(app):
     def about():
     	return render_template("about.html")
 
-    @app.route("/mbookings")
-    def mbookings():
+    @app.route("/pcbookings")
+    def pcbookings():
     	return mb.mbookings()
 
     @app.route("/logout")
