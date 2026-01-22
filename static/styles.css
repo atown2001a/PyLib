@@ -1,0 +1,58 @@
+.iface {
+text-align: right;
+border: 1.5em dotted black;
+}
+
+
+body {
+	background-color: #ffffb3;
+	color: #2D1F1A;
+	margin: 0px;
+	padding: 5px;
+}
+
+.contentX {
+margin: 50px;
+padding: 20px;
+border: 0.5em dotted black;
+}
+
+h2 {
+padding: 0px;  
+margin: 0px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+ background-color: #890304;
+// display: flex; 
+ overflow: hidden;
+  // justify-content: center; 
+}
+
+ul li {
+  float: left;
+}
+
+ul li a {
+  display: block;  
+  color: white;
+  text-align: center;  
+  padding: 25px 50px;
+  text-decoration: none;
+}
+
+ul li a:hover:not(.active) {
+  background-color: gold;
+  color: black;
+}
+
+ul li a.active {
+  background-color: #001233;
+}
+
+.books {
+margin: 2.5rem;
+}

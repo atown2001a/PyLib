@@ -1,0 +1,56 @@
+[
+    {
+        "name": "Jason Dalla",
+        "branch": "Derry",
+        "books": [
+            {
+                "title": "Flask for Beginners",
+                "date_taken": "2024-12-01",
+                "due_date": "2025-12-02"
+            },
+            {
+                "title": "Advanced Python",
+                "date_taken": "2024-12-05",
+                "due_date": "2025-12-19"
+            }
+        ]
+    },
+    {
+        "name": "Connor Smith",
+        "branch": "Bally",
+        "books": [
+            {
+                "title": "Fruit",
+                "date_taken": "2023-04-01",
+                "due_date": "2026-01-01"
+            }
+        ]
+    },
+    {
+        "name": "Lolly Wali",
+        "branch": "Bally",
+        "books": [
+            {
+                "title": "Plants and growing",
+                "date_taken": "2023-06-02",
+                "due_date": "2025-12-01"
+            }
+        ]
+    },
+    {
+        "name": "Sarah Connor",
+        "branch": "Derry",
+        "books": [
+            {
+                "title": "Colours",
+                "date_taken": "2023-07-04",
+                "due_date": "2026-06-04"
+            },
+            {
+                "title": "Animals",
+                "date_taken": "2023-06-06",
+                "due_date": "2025-11-25"
+            }
+        ]
+    }
+]

@@ -1,0 +1,10 @@
+#/bin/bash
+# Source - https://stackoverflow.com/a
+# Posted by davidism, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-01-13, License - CC BY-SA 4.0
+
+nohup gunicorn -w 3 -b 0.0.0.0:5000 app:app & 
+
+nohup flask run -h 0.0.0.0 -p 8000 &
+
+nohup flask run -h 0.0.0.0 -p 8080 &
