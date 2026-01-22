@@ -1,34 +1,34 @@
 .iface {
-text-align: right;
-border: 1.5em dotted black;
+  text-align: right;
+  border: 1.5em dotted black;
 }
 
 
 body {
-	background-color: #ffffb3;
-	color: #2D1F1A;
-	margin: 0px;
-	padding: 5px;
+  background-color: #ffffb3;
+  color: #2D1F1A;
+  margin: 0px;
+  padding: 5px;
 }
 
 .contentX {
-margin: 50px;
-padding: 20px;
-border: 0.5em dotted black;
+  margin: 50px;
+  padding: 20px;
+  border: 0.5em dotted black;
 }
 
 h2 {
-padding: 0px;  
-margin: 0px;
+  padding: 0px;  
+  margin: 0px;
 }
 
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
- background-color: #890304;
-// display: flex; 
- overflow: hidden;
+  background-color: #890304;
+  // display: flex; 
+  overflow: hidden;
   // justify-content: center; 
 }
 
@@ -40,7 +40,7 @@ ul li a {
   display: block;  
   color: white;
   text-align: center;  
-  padding: 25px 50px;
+  padding: 20px 40px;
   text-decoration: none;
 }
 
@@ -53,6 +53,85 @@ ul li a.active {
   background-color: #001233;
 }
 
-.books {
-margin: 2.5rem;
+.listI {
+  margin: 2.5rem;
+}
+
+#lBTN {
+ float:right;
+ background-color:#804000;
+ font-weight:bold;
+}
+
+#chCBTN{
+  float:right; 
+width: 30%;
+  cursor: pointer;
+display:block;
+padding: 20px 40px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#chCBTNg {
+  # color: white; 
+  background-color: green;
+}
+
+#chCBTNr {
+  color: white;
+  background-color: red;
+}
+#chCBTNb {
+  color: white;
+  background-color: black;
+}
+
+#chCBTNbl {
+  # color: white; 
+  background-color: blue;
+}
+
+#chCBTNdb {
+  color: white;
+  background-color: darkblue;
+}
+#chCBTNgr {
+  color: white;
+  background-color: darkslategrey;
+}
+.barBTNGroup {
+  float:left;
+  cursor: pointer;
+  width: 30%;
+  display: block;
+  padding: 10px 30px;
+}
+
+#btnC1 {
+background-color: darkblue;
+color: white;
+}
+#btnC2 {
+background-color: darkblue;
+color: white;
+}
+#btnC3 {
+background-color: darkgreen;
+color: white;
+}
+#btnC4 {
+background-color: darkgreen;
+color: white;
+}
+#btnC5 {
+background-color: maroon;
+color: white;
+}
+#btnC6 {
+background-color: maroon;
+color: white;
+}
+.bor1 {
+border: 0.5em dotted white;
 }

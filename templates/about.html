@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">	
-<!-- <script src="script.js"> -->
-<title>About</title>
-<style>
-.boxy {
-margin: 2.5rem;
- font-size: 14px; 
-}
-</style>
+        <script defer src="{{ url_for('static', filename='script.js') }}"></script>
+    <title>About</title>
+    <style>
+    .listInt { 
+      font-size: 14px; 
+    }
+    </style>
 </head>
 <body>
 <ul>
   <li><a href="{{ url_for('dashboard') }}">Home</a></li>
-  <li><a class="active" href="{{ url_for('about') }}">About</a></li>
+  <li><a class="active" id="active" href="{{ url_for('about') }}">About</a></li>
   <li><a href="{{ url_for('pcbookings') }}">PC Bookings</a></li>
-  <li style="float:right;background-color:DarkSlateGrey;font-weight:bold;"><a href="{{ url_for('logout') }}">Logout</a></li>
+  <li id="lBTN" style="float:right;background-color:DarkSlateGrey;font-weight:bold;"><a href="{{ url_for('logout') }}">Logout</a></li>
 </ul>
-<div class="contentX"> 
+<div class="contentX" id="contentX"> 
  <h1>About</h1>  
 <p>We are a Library network in Derry and Ballymena</p>
 <h2>Derry Staff</h2>
-	<div class="boxy">
+	<div class="listI listInt">
 	<ol>
 		<li><p><pre> Ahmed Al-Meleh					(Director of IT)</pre></p></li>	
 		<li><p><pre> John Doe					(Derry Branch Manager)</pre></p></li>
@@ -33,11 +33,30 @@ margin: 2.5rem;
 	</div>
 <br>
 <h2>Ballymena Staff</h2>
-   	<div class="boxy">
+   	<div class="listI listInt">
 	<ol>
 		<li><p><pre> Max Owen	    			        (Ballymena Branch Manager)</pre></p></li>
 	</ol>
 	</div>
+</div>
+<div class="barBTNGroup">
+<button id="btnC1" onclick="fBorder()" style="bakckground-color:darkblue  important;">Dark Mode (Bar Blue accent red)</button>
+<button id="btnC2" onclick="fBorder2()" style="bakckground-color:darkblue  important;">Dark Mode 2 (Bar Blue accent green) </button>
+<button id="btnC3" onclick="fBorder3()"  style="bakckground-color:darkgreen  important;">Dark Mode 3 (Bar Green accent red) </button>
+<button id="btnC4" onclick="fBorder4()" style="bakckground-color:darkgreen important;">Dark Mode 4 (Bar Green accent blue)</button>
+<button id="btnC5" onclick="fBorder5()"  style="bakckground-color:maroon important;">Dark Mode 5 (Bar Red accent green)</button>
+<button id="btnC6" onclick="fBorder6()"  style="bakckground-color:maroon important;">Dark Mode 6 (Bar Red accent blue)</button>
+
+<button type="button" onclick="GoBack()">Light Mode</button>
+</div>
+<div id="chCBTN">
+		<button onclick="fBlack()"  id="chCBTNb">Logout color Black</button> 
+		<button onclick="fGreen()" id="chCBTNg">Logout color Green</button>
+		<button onclick="fRed()"  id="chCBTNr">Logout color Red</button>		
+                <button onclick="fBlue()"  id="chCBTNbl">Logout color Blue</button> 
+		<button onclick="fDarkBlue()" id="chCBTNdb">Logout color DarkBlue</button>
+		<button onclick="fGrey()"  id="chCBTNgr">Logout color Grey</button>
+</div>
 </div>
 <script>
 const userAgent = navigator.userAgent.toLowerCase();
@@ -107,7 +126,6 @@ if (zoomLevel !== 110) {
 	};
 
 }
-
 </script>
 </body>
 </html>

@@ -3,33 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     	 <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-	
-	<!-- <script src="script.js"> -->
+ 	<script defer src="{{ url_for('static', filename='script.js') }}"></script> 		
+
 <title>Dashboard - Branch {{ branch }}</title>
 <style>
-.books {
-margin: 2.5rem;
+.bList {
+margin-top:1.5rem;
+margin-left:5rem;
 }
 </style>
 </head>
 <body>
+<div id="myUI">
 <ul>
-  <li><a class="active" href="{{ url_for ('dashboard') }}">Home</a></li>
+  <li><a class="active" id="active" href="{{ url_for ('dashboard') }}">Home</a></li>
   <li><a href="{{ url_for('about') }}">About</a></li>
   <li><a href="{{ url_for('pcbookings') }}">PC Bookings</a></li>
-  <li style="float:right;background-color:DarkSlateGrey;font-weight:bold;"><a href="{{ url_for('logout') }}">Logout</a></li>
+  <li id="lBTN" style="float:right;background-color:DarkSlateGrey;font-weight:bold;"><a href="{{ url_for('logout') }}">Logout</a></li>
 </ul>
-<div class="contentX"> 
+<div class="contentX" id="contentX"> 
  <h1>Branch: {{ branch }}</h1>  
 <p>Welcome, {{ fullname }}!</p>
-    <div class="books">
+    <div class="listI">
 <h2>Books Due</h2>
-
+<div class="bList">
         {% for item in due_books %}
         <li>{{ item.customer }} &emsp;&emsp;&emsp;&emsp; Book: {{ item.book }}  &emsp;&emsp;&emsp;&emsp; (Due: {{ item.due_date }})</li>
         {% endfor %}
    </div>
+</div>
+</div>
+<div class="barBTNGroup">
+<button id="btnC1" onclick="fBorder()" style="bakckground-color:darkblue  important;">Dark Mode (Bar Blue accent red)</button>
+<button id="btnC2" onclick="fBorder2()" style="bakckground-color:darkblue  important;">Dark Mode 2 (Bar Blue accent green) </button>
+<button id="btnC3" onclick="fBorder3()"  style="bakckground-color:darkgreen  important;">Dark Mode 3 (Bar Green accent red) </button>
+<button id="btnC4" onclick="fBorder4()" style="bakckground-color:darkgreen important;">Dark Mode 4 (Bar Green accent blue)</button>
+<button id="btnC5" onclick="fBorder5()"  style="bakckground-color:maroon important;">Dark Mode 5 (Bar Red accent green)</button>
+<button id="btnC6" onclick="fBorder6()"  style="bakckground-color:maroon important;">Dark Mode 6 (Bar Red accent blue)</button>
+
+<button type="button" onclick="GoBack()">Light Mode</button>
+</div>
+<div id="chCBTN">
+		<button onclick="fBlack()"  id="chCBTNb">Logout color Black</button> 
+		<button onclick="fGreen()" id="chCBTNg">Logout color Green</button>
+		<button onclick="fRed()"  id="chCBTNr">Logout color Red</button>		
+                <button onclick="fBlue()"  id="chCBTNbl">Logout color Blue</button> 
+		<button onclick="fDarkBlue()" id="chCBTNdb">Logout color DarkBlue</button>
+		<button onclick="fGrey()"  id="chCBTNgr">Logout color Grey</button>
+</div>
 </div>
 <script>
 const userAgent = navigator.userAgent.toLowerCase();
@@ -76,7 +99,7 @@ function checkZoom() {
 	    }
 	window.onload = function() {
 	    checkZoom();
-	};
+};
 
 } else if (isChrome) {
 // For Chrome Only
@@ -99,7 +122,6 @@ if (zoomLevel !== 110) {
 	};
 
 }
-
 </script>
 </body>
 </html>
