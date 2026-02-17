@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for, session
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, validators
-import os
+import auth
 
 
 class LoginForm(FlaskForm):
@@ -11,60 +11,42 @@ class LoginForm(FlaskForm):
 
 
 def find_auth_module():
-    search_dirs = [
-        "/opt",
-        "/mnt/Authy",
-    ]
+    auth_dir = os.environ.get("AUTH_DIR")
+    if not auth_dir:
+        print("AUTH_DIR not set.")
+        return None
 
-    auth_module_name = "auth"
+    auth_module_path = os.path.join(auth_dir, "auth.py")
 
-    for directory in search_dirs:
-        print("Searching in:", directory)
-        auth_module_path = os.path.join(directory, auth_module_name + ".py")
-        if os.path.isfile(auth_module_path):
-            print("Auth module file found at:", auth_module_path)
-            return auth_module_path
+    if os.path.isfile(auth_module_path):
+        print("Auth module file found at:", auth_module_path)
+        return auth_module_path
 
     print("Auth module file not found.")
     return None
 
 
 def register(app):
+
     @app.route("/", methods=["GET", "POST"])
     def login():
-        auth_module_path = find_auth_module()
 
-        if auth_module_path:
-            try:
-                from importlib.machinery import SourceFileLoader
-                auth_module = SourceFileLoader("auth", auth_module_path).load_module()
-                authenticate = auth_module.authenticate
+        form = LoginForm(request.form)
 
-                print("Authentication module found at:", auth_module_path)
+        if request.method == "POST" and form.validate():
+            username = form.username.data
+            password = form.password.data
 
-                form = LoginForm(request.form)
+            branch, fullname = auth.authenticate(username, password)
 
-                if request.method == "POST" and form.validate():
-                    username = form.username.data
-                    password = form.password.data
+            if branch:
+                session["username"] = username
+                session["branch"] = branch
+                session["fullname"] = fullname
+                return redirect(url_for("dashboard"))
 
-                    branch, fullname = authenticate(username, password)
+            return render_template(
+                "login.html", form=form, error="Invalid username or password"
+            )
 
-                    if branch:
-                        session["username"] = username
-                        session["branch"] = branch
-                        session["fullname"] = fullname
-                        return redirect(url_for("dashboard"))
-
-                    return render_template("login.html", form=form, error="Invalid username or password")
-
-                return render_template("login.html", form=form)
-
-            except Exception as e:
-                print("Error importing or executing the authenticate function:", e)
-
-        else:
-            print("Auth module file not found.")
-
-        form = LoginForm()
         return render_template("login.html", form=form)

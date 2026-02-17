@@ -4,8 +4,9 @@ from pathlib import Path
 
 BOOKINGS_JSON = Path("/opt/PyPCBookingSystem/data/bookings.json")
 
-#def register(app):
+# def register(app):
 #    @app.route("/mbookings")
+
 
 def mbookings():
     branch = session["branch"]
@@ -21,5 +22,5 @@ def mbookings():
         username=session["username"],
         fullname=session.get("fullname"),
         bookings=branch_bookings,
-        branch=branch
+        branch=branch,
     )

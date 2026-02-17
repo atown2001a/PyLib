@@ -3,6 +3,7 @@ import json
 from datetime import datetime
 import mbookings as mb
 
+
 def get_due_books(customers):
     today = datetime.today().date()
     due_books = []
@@ -10,11 +11,13 @@ def get_due_books(customers):
     for customer in customers:
         for book in customer["books"]:
             if datetime.strptime(book["due_date"], "%Y-%m-%d").date() <= today:
-                due_books.append({
-                    "customer": customer["name"],
-                    "book": book["title"],
-                    "due_date": book["due_date"]
-                })
+                due_books.append(
+                    {
+                        "customer": customer["name"],
+                        "book": book["title"],
+                        "due_date": book["due_date"],
+                    }
+                )
 
     return due_books
 
@@ -34,21 +37,21 @@ def register(app):
             return render_template(
                 "dashboard.html",
                 username=session["username"],
-		fullname=session.get('fullname'),
+                fullname=session.get("fullname"),
                 branch=branch,
                 customers=customers,
-                due_books=due_books
+                due_books=due_books,
             )
 
         return redirect(url_for("login"))
-	
+
     @app.route("/about")
     def about():
-    	return render_template("about.html")
+        return render_template("about.html")
 
     @app.route("/pcbookings")
     def pcbookings():
-    	return mb.mbookings()
+        return mb.mbookings()
 
     @app.route("/logout")
     def logout():
