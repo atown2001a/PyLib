@@ -15,6 +15,7 @@ if AUTH_DIR not in sys.path:
     sys.path.insert(0, AUTH_DIR)
 import auth
 
+authenticate = auth.authenticate
 # import routes AFTER app is created
 import login
 import dashboard
